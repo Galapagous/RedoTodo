@@ -3,8 +3,9 @@ const mongoose = require("mongoose")
 const App = express()
 const TodoApi = require("./Routes/Todo")
 const cors = require("cors")
-App.use(cors())
+const bodyParser = require("body-parser")
 
+App.use(cors())
 App.use(express.json())
 
 mongoose

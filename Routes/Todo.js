@@ -14,10 +14,10 @@ router.get("/todo", async (req, res) => {
 
 // Create a new todo
 router.post("/new", async (req, res) => {
-  if (req.body.header && req.body.description) {
+  if (req.body.heading && req.body.description) {
     try {
       const data = new Todo({
-        heading: req.body.header,
+        heading: req.body.heading,
         description: req.body.description,
       })
       const newTodo = await data.save()
@@ -32,6 +32,7 @@ router.post("/new", async (req, res) => {
 
 // Updating a todo
 router.put("/update/:id", async (req, res) => {
+  // console.log(req.params.id)
   try {
     const data = await Todo.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
     res.status(200).json(data)
@@ -39,7 +40,18 @@ router.put("/update/:id", async (req, res) => {
     res.status(500).json(err)
   }
 })
-
+// Complete/Incomplete a todo
+router.put("/complete/:id", async (req, res) => {
+  try {
+    const item = await Todo.findById(req.params.id)
+    item.isComplete = !item.isComplete
+    await item.save()
+    res.status(200).json(item)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+// Delte Todo
 router.delete("/delete/:id", async (req, res) => {
   try {
     const data = await Todo.findByIdAndRemove(req.params.id)
