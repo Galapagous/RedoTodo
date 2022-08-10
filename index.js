@@ -4,12 +4,14 @@ const App = express()
 const TodoApi = require("./Routes/Todo")
 const cors = require("cors")
 const bodyParser = require("body-parser")
+const dotenv = require("dotenv")
 
 App.use(cors())
 App.use(express.json())
+dotenv.config()
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/W3Todo", { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(console.log("connected to DB"))
   .catch((err) => {
     console.log(err)
@@ -20,6 +22,6 @@ App.get("/", (req, res) => {
 })
 App.use("/api", TodoApi)
 
-App.listen(4000, () => {
+App.listen(process.env.PORT, () => {
   console.log("App is listening on port 4000")
 })
