@@ -22,9 +22,10 @@ App.get("/", (req, res) => {
 })
 App.use("/api", TodoApi)
 
-if (process.env.NODE_ENV === "production") {
-  App.use(express.static("client/build"))
-}
+App.use(express.static(path.join(__dirname, "/client")))
+App.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.js"))
+})
 
 App.listen(process.env.PORT, () => {
   console.log("App is listening on port 4000")
