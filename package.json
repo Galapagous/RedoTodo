@@ -4,7 +4,12 @@
   "description": "w3dev todo backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm install-client && npm run build",
+    "start": "node index.js",
+    "client": "cd client && npm start"
   },
   "author": "muhammed musa",
   "license": "ISC",

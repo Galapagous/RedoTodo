@@ -11,16 +11,20 @@ App.use(express.json())
 dotenv.config()
 
 mongoose
-  .connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || process.env.SHELL_URL, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(console.log("connected to DB"))
   .catch((err) => {
-    console.log(err)
+    console.log(`error connecting to data base`)
   })
 
 App.get("/", (req, res) => {
   res.send("Hello from galapagous")
 })
 App.use("/api", TodoApi)
+
+if (process.env.NODE_ENV === "production") {
+  App.use(express.static("client/build"))
+}
 
 App.listen(process.env.PORT, () => {
   console.log("App is listening on port 4000")
