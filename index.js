@@ -11,10 +11,10 @@ App.use(express.json())
 dotenv.config()
 
 mongoose
-  .connect(process.env.MONGODB_URI || process.env.SHELL_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(process.env.MONGO_URLU || process.env.SHELL_URL, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(console.log("connected to DB"))
   .catch((err) => {
-    console.log(`error connecting to data base`)
+    console.log(`error connecting to database${err}`)
   })
 
 App.get("/", (req, res) => {
@@ -22,11 +22,15 @@ App.get("/", (req, res) => {
 })
 App.use("/api", TodoApi)
 
-App.use(express.static(path.join(__dirname, "/client")))
-App.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build", "index.js"))
-})
+// App.use(express.static(path.join(__dirname, "/client")))
+// App.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "/client/build", "index.js"))
+// })
 
+let port = process.env.PORT
+if (port == null || port == "") {
+  port = process.env.MY_PORT
+}
 App.listen(process.env.PORT, () => {
-  console.log("App is listening on port 4000")
+  console.log(`App is listening on port ${port}`)
 })
