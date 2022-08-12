@@ -38,6 +38,6 @@ let port = process.env.PORT
 if (port == null || port == "") {
   port = process.env.MY_PORT
 }
-App.listen(4000, () => {
+App.listen(port, () => {
   console.log(`App is listening on port 4000`)
 })
