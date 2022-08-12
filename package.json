@@ -17,5 +17,15 @@
     "express": "^4.18.1",
     "mongoose": "^6.5.1",
     "nodemon": "^2.0.19"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Galapagous/W3fullStackTodo.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Galapagous/W3fullStackTodo/issues"
+  },
+  "homepage": "https://github.com/Galapagous/W3fullStackTodo#readme"
 }
