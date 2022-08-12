@@ -4,15 +4,11 @@
   "description": "w3dev todo backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm build",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "muhammed musa",
   "license": "ISC",
-  "engine": {
-    "node": "16.14.0"
-  },
   "dependencies": {
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
