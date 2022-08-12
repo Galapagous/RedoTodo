@@ -23,9 +23,9 @@ App.use("/api", TodoApi)
 // ------------------------------Deployment------------------------------------
 const __dirname1 = path.resolve()
 if (process.env.NODE_ENV === "production") {
-  App.use(express.static(path.join(__dirname1, "client/build")))
+  App.use(express.static(path.join(__dirname1, "/client/build")))
   App.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname1, "/client/build", "index.html"))
   })
 } else {
   App.get("/", (req, res) => {
@@ -38,6 +38,6 @@ let port = process.env.PORT
 if (port == null || port == "") {
   port = process.env.MY_PORT
 }
-App.listen(port, () => {
-  console.log(`App is listening on port 4000`)
+App.listen(port || 4000, () => {
+  console.log(`App is listening on port ${port}`)
 })
