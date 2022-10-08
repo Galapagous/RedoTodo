@@ -12,7 +12,7 @@ App.use(express.json())
 dotenv.config()
 
 mongoose
-  .connect(process.env.SHELL_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(console.log("connected to DB"))
   .catch((err) => {
     console.log(`error connecting to database:${err}`)
