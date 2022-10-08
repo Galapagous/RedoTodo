@@ -21,7 +21,10 @@ mongoose
 App.use("/api", TodoApi)
 
 // ------------------------------Deployment------------------------------------
-
+App.use(express.static(path.join(__dirname, "/client")))
+App.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"))
+})
 // ------------------------------Deployment------------------------------------
 
 let port = process.env.PORT
