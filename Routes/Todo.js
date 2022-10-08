@@ -4,7 +4,7 @@ const router = express.Router()
 
 // Fetch todo
 router.get("/todo", async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   try {
     const data = await Todo.find()
     res.status(200).json(data)

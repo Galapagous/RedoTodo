@@ -21,17 +21,7 @@ mongoose
 App.use("/api", TodoApi)
 
 // ------------------------------Deployment------------------------------------
-// const __dirname1 = path.resolve()
-// if (process.env.NODE_ENV === "production") {
-//   App.use(express.static(path.join(__dirname, "/client/build")))
-//   App.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "/client/build", "index.html"))
-//   })
-// } else {
-//   App.get("/", (req, res) => {
-//     res.send("Hello from galapagous")
-//   })
-// }
+
 // ------------------------------Deployment------------------------------------
 
 let port = process.env.PORT
