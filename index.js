@@ -27,10 +27,6 @@ App.get("*", (req, res) => {
 })
 // ------------------------------Deployment------------------------------------
 
-let port = process.env.PORT
-if (port == null || port == "") {
-  port = process.env.MY_PORT
-}
-App.listen(4000, () => {
-  console.log(`App is listening on port 4000`)
+App.listen(process.env.PORT || 4000, () => {
+  console.log(`App is listening on ${PORT}`)
 })
